@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Künstler - Klassik Asaeda</title>
+    <meta name="description" content="Erfahren Sie mehr über die talentierten Künstler der Klassik Asaeda Konzertreihe.">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="konzerte.html">Konzerttermine</a></li>
+                    <li><a href="kuenstler.html" class="active">Künstler</a></li>
+                    <li><a href="aufnahmen.html">Aufnahmen</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
+                </a>
+            </div>
+            <div class="cart-button">
+                <a href="#" id="cart-toggle">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="container">
+            <h1>Unsere Künstler</h1>
+            <p>Erfahren Sie mehr über die erstaunlichen Biographien unserer Künstler</p>
+        </div>
+    </section>
+
+    <section class="artists">
+        <div class="container">
+            <!-- Featured Artist -->
+            <div class="featured-artist">
+                <div class="artist-image">
+                    <img src="assets/images/artists/nobuhiko-asaeda.jpg" alt="Nobuhiko Asaeda">
+                </div>
+                <div class="artist-info">
+                    <h2>Nobuhiko Asaeda</h2>
+                    <p class="artist-instrument">Violine</p>
+                    <div class="artist-bio">
+                        <p>Nobuhiko Asaeda wurde in Tokio geboren und erhielt im Alter von vier Jahren seinen ersten Violinunterricht. Nach dem Studium am Toho-Konservatorium in Tokio setzte er seine Ausbildung in Europa fort, wo er von Meistern wie Zakhar Bron und Ana Chumachenco unterrichtet wurde.</p>
+                        
+                        <p>Als Preisträger zahlreicher internationaler Wettbewerbe, darunter der Tschaikowsky-Wettbewerb in Moskau und der Queen Elisabeth Wettbewerb in Brüssel, hat sich Nobuhiko Asaeda als einer der führenden Violinisten seiner Generation etabliert.</p>
+                        
+                        <p>Sein Repertoire umfasst alle wichtigen Violinkonzerte und Kammermusikwerke vom Barock bis zur Gegenwart. Besonders für seine leidenschaftlichen Interpretationen der Werke von Bach, Beethoven und Tschaikowsky ist er bekannt. Als gefragter Solist tritt er regelmäßig mit renommierten Orchestern in Europa, Asien und Amerika auf.</p>
+                        
+                        <p>Neben seiner Konzerttätigkeit engagiert sich Nobuhiko Asaeda in der Förderung junger Talente. Er gibt Meisterkurse an internationalen Musikakademien und ist Professor für Violine an der Hochschule für Musik in Frankfurt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Ensemble-Mitglieder</h2>
+            
+            <div class="artists-grid">
+                <!-- Ensemble Member 1 -->
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="assets/images/artists/artist-1.jpg" alt="Sora Lavorgna">
+                    </div>
+                    <div class="artist-card-content">
+                        <h3>Sora Lavorgna</h3>
+                        <p class="artist-instrument">Violine</p>
+                        <p class="artist-short-bio">Gewinnerin des Grumiaux Internationalen Wettbewerbs in Brüssel. Studierte am Konservatorium in Paris und an der Juilliard School in New York.</p>
+                        <a href="#modal-artist-1" class="btn btn-outline modal-trigger">Mehr erfahren</a>
+                    </div>
+                </div>
+
+                <!-- Ensemble Member 2 -->
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="assets/images/artists/artist-2.jpg" alt="Philippe Moreau">
+                    </div>
+                    <div class="artist-card-content">
+                        <h3>Philippe Moreau</h3>
+                        <p class="artist-instrument">Cello</p>
+                        <p class="artist-short-bio">Ehemaliger Solocellist des Orchestre National de France. Träger des Grand Prix du Disque für seine Einspielung der Bach-Suiten.</p>
+                        <a href="#modal-artist-2" class="btn btn-outline modal-trigger">Mehr erfahren</a>
+                    </div>
+                </div>
+
+                <!-- Ensemble Member 3 -->
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="assets/images/artists/artist-3.jpg" alt="Elena Popescu">
+                    </div>
+                    <div class="artist-card-content">
+                        <h3>Elena Popescu</h3>
+                        <p class="artist-instrument">Klavier</p>
+                        <p class="artist-short-bio">Ausgebildet an der Musikakademie in Bukarest und der Hochschule für Musik "Hanns Eisler" Berlin. Preisträgerin des Internationalen Chopin-Wettbewerbs.</p>
+                        <a href="#modal-artist-3" class="btn btn-outline modal-trigger">Mehr erfahren</a>
+                    </div>
+                </div>
+
+                <!-- Ensemble Member 4 -->
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="assets/images/artists/artist-4.jpg" alt="Akira Tanaka">
+                    </div>
+                    <div class="artist-card-content">
+                        <h3>Akira Tanaka</h3>
+                        <p class="artist-instrument">Viola</p>
+                        <p class="artist-short-bio">Absolvent der Tokyo University of the Arts und der Hochschule für Musik und Theater München. Konzertmeister des Tokyo Symphony Orchestra.</p>
+                        <a href="#modal-artist-4" class="btn btn-outline modal-trigger">Mehr erfahren</a>
+                    </div>
+                </div>
+
+                <!-- More ensemble members would be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Artist Modal 1 -->
+    <div id="modal-artist-1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Sora Lavorgna</h2>
+                <p class="artist-instrument">Violine</p>
+            </div>
+            <div class="modal-body artist-modal-body">
+                <div class="modal-image">
+                    <img src="assets/images/artists/artist-1-large.jpg" alt="Sora Lavorgna">
+                </div>
+                <div class="modal-description">
+                    <div class="artist-full-bio">
+                        <p>Sora Lavorgna wurde 1992 in Paris geboren. Im Alter von fünf Jahren begann sie mit dem Violinunterricht und zeigte schon früh außergewöhnliches Talent. Mit neun Jahren wurde sie am Conservatoire National Supérieur de Musique de Paris aufgenommen, wo sie bei Suzanne Gessner studierte.</p>
+                        
+                        <p>Nach ihrem Abschluss in Paris setzte sie ihre Studien an der Juilliard School in New York bei Itzhak Perlman fort. 2015 gewann sie den 1. Preis beim Grumiaux Internationalen Wettbewerb in Brüssel, was den Start ihrer internationalen Karriere markierte.</p>
+                        
+                        <p>Sora hat mit zahlreichen renommierten Orchestern zusammengearbeitet, darunter das London Symphony Orchestra, das Orchestre de Paris und das NHK Symphony Orchestra Tokyo. Ihr Repertoire reicht von Bach bis zu zeitgenössischen Komponisten, wobei sie besonders für ihre einfühlsame Interpretation der französischen Musik geschätzt wird.</p>
+                        
+                        <p>Neben ihrer Solokarriere ist Sora eine begeisterte Kammermusikerin und Mitbegründerin des Trio Lumière, das sich auf das Repertoire des französischen Impressionismus spezialisiert hat. Seit 2020 arbeitet sie regelmäßig mit Nobuhiko Asaeda zusammen und ist ein festes Mitglied seiner Konzertreihen.</p>
+                    </div>
+                    
+                    <div class="artist-recordings">
+                        <h3>Ausgewählte Aufnahmen</h3>
+                        <ul class="recordings-list">
+                            <li>
+                                <span class="recording-title">Violin Concertos by Sibelius & Tchaikovsky</span>
+                                <span class="recording-label">Deutsche Grammophon (2019)</span>
+                            </li>
+                            <li>
+                                <span class="recording-title">French Impressions: Works by Debussy, Ravel and Fauré</span>
+                                <span class="recording-label">Harmonia Mundi (2021)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional artist modals would be added here -->
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <address>
+                        Email: <a href="mailto:info@klassik-asaeda.de">info@klassik-asaeda.de</a><br>
+                        Telefon: +49 123 456789
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Folgen Sie uns</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Klassik Asaeda. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h2>Ihr Warenkorb</h2>
+                <button class="close-cart" id="close-cart">×</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be inserted here by JavaScript -->
+                <p class="empty-cart-message">Ihr Warenkorb ist leer.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Gesamt:</span>
+                    <span class="total-price">€0,00</span>
+                </div>
+                <button class="btn btn-primary checkout-button" id="checkout-button" disabled>Zur Kasse</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Additional JavaScript for the artists page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal functionality
+            const modalTriggers = document.querySelectorAll('.modal-trigger');
+            const modalOverlay = document.querySelector('.modal-overlay');
+            const closeBtns = document.querySelectorAll('.close-modal');
+            
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const modalId = this.getAttribute('href');
+                    const modal = document.querySelector(modalId);
+                    
+                    if (modal) {
+                        modal.classList.add('active');
+                        modalOverlay.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            function closeModals() {
+                const activeModals = document.querySelectorAll('.modal.active');
+                activeModals.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', closeModals);
+            });
+            
+            if (modalOverlay) {
+                modalOverlay.addEventListener('click', closeModals);
+            }
+        });
+    </script>
+</body>
+</html>
