@@ -1,80 +1,171 @@
-/**
- * Klassik Asaeda - Main JavaScript
- * Handles cart functionality and UI interactions
- */
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klassik Asaeda - Hochwertige klassische Konzerte</title>
+    <meta name="description" content="Erleben Sie klassische Meisterwerke und preisgekrönte Musiker aus aller Welt unter der Leitung von Nobuhiko Asaeda.">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="konzerte.html">Konzerttermine</a></li>
+                    <li><a href="kuenstler.html">Künstler</a></li>
+                    <li><a href="aufnahmen.html">Aufnahmen</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
+                </a>
+            </div>
+            <div class="cart-button">
+                <a href="#" id="cart-toggle">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize cart
-    initCart();
-    
-    // Setup event listeners
-    setupEventListeners();
-    
-    // Handle header scroll effects
-    handleHeaderScroll();
-});
+    <section class="hero">
+        <div class="hero-image">
+            <!-- This would be replaced with your actual hero image -->
+            <div class="hero-content">
+                <h1>Klassik Asaeda</h1>
+                <p>Erleben Sie klassische Meisterwerke und preisgekrönte Musiker aus aller Welt</p>
+                <div class="hero-buttons">
+                    <a href="konzerte.html" class="btn btn-primary">Konzerte</a>
+                    <a href="aufnahmen.html" class="btn btn-secondary">Aufnahmen</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-/**
- * Initialize shopping cart state
- */
-function initCart() {
-    // Get cart from localStorage or initialize empty cart
-    window.cart = JSON.parse(localStorage.getItem('klassikAsaedaCart')) || {
-        items: [],
-        total: 0
-    };
-    
-    // Update cart counter
-    updateCartCount();
-}
+    <section class="features">
+        <div class="container">
+            <div class="feature-box">
+                <div class="feature-icon">ℹ️</div>
+                <h2>Künstler</h2>
+                <p>Erfahren Sie mehr über die erstaunlichen Biographien unserer Künstler</p>
+                <a href="kuenstler.html" class="feature-link">Hier geht's weiter!</a>
+            </div>
 
-/**
- * Setup all event listeners
- */
-function setupEventListeners() {
-    // Cart toggle
-    const cartToggle = document.getElementById('cart-toggle');
-    const closeCart = document.getElementById('close-cart');
-    const cartOverlay = document.getElementById('cart-overlay');
-    
-    if (cartToggle) {
-        cartToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            cartOverlay.classList.add('active');
-            // Prevent body scrolling when cart is open
-            document.body.style.overflow = 'hidden';
-        });
-    }
-    
-    if (closeCart) {
-        closeCart.addEventListener('click', function() {
-            cartOverlay.classList.remove('active');
-            // Restore body scrolling
-            document.body.style.overflow = '';
-        });
-    }
-    
-    // Add to cart buttons
-    const addToCartButtons = document.querySelectorAll('.btn-cart');
-    addToCartButtons.forEach(button => {
-        button.addEventListener('click', handleAddToCart);
-    });
-    
-    // Checkout button
-    const checkoutButton = document.getElementById('checkout-button');
-    if (checkoutButton) {
-        checkoutButton.addEventListener('click', handleCheckout);
-    }
-}
+            <div class="feature-box">
+                <div class="feature-icon">🗓️</div>
+                <h2>Termine</h2>
+                <p>Finden Sie das passende Konzert in Ihrer Nähe und sichern Sie sich jetzt Karten.</p>
+                <a href="konzerte.html" class="feature-link">Hier geht's weiter!</a>
+            </div>
 
-/**
- * Handle fixed header appearance on scroll
- */
-function handleHeaderScroll() {
-    const header = document.querySelector('.site-header');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+            <div class="feature-box">
+                <div class="feature-icon">▶️</div>
+                <h2>Aufnahmen</h2>
+                <p>Hören Sie sich atemberaubende Aufnahmen von KlassikAsaeda komplett kostenlos an.</p>
+                <a href="aufnahmen.html" class="feature-link">Hier geht's weiter!</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="upcoming-concerts">
+        <div class="container">
+            <h2>Kommende Konzerte</h2>
+            <div class="concert-grid">
+                <div class="concert-card">
+                    <div class="concert-image">
+                        <!-- Replace with actual image -->
+                        <div class="sale-badge">Sale</div>
+                    </div>
+                    <h3>Meisterkurs-Konzert Neustadt an der Weinstraße</h3>
+                    <div class="concert-details">
+                        <p class="concert-date">09. August 2024 | 19:00 Uhr</p>
+                        <p class="concert-price"><span class="original-price">€22,00 EUR</span> <span class="sale-price">€18,00 EUR</span></p>
+                    </div>
+                    <button class="btn btn-cart">In den Warenkorb legen</button>
+                </div>
+                <!-- More concert cards would be added here -->
+            </div>
+            <div class="view-all">
+                <a href="konzerte.html" class="btn btn-outline">Alle Konzerte anzeigen</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Stimmen über uns</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <blockquote>
+                        "Ein unvergessliches Konzerterlebnis mit Interpretationen, die unter die Haut gehen."
+                    </blockquote>
+                    <cite>— Süddeutsche Zeitung</cite>
+                </div>
+                <!-- More testimonials would be added here -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <address>
+                        Email: <a href="mailto:info@klassik-asaeda.de">info@klassik-asaeda.de</a><br>
+                        Telefon: +49 123 456789
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Folgen Sie uns</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Klassik Asaeda. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h2>Ihr Warenkorb</h2>
+                <button class="close-cart" id="close-cart">×</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be inserted here by JavaScript -->
+                <p class="empty-cart-message">Ihr Warenkorb ist leer.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Gesamt:</span>
+                    <span class="total-price">€0,00</span>
+                </div>
+                <button class="btn btn-primary checkout-button" id="checkout-button" disabled>Zur Kasse</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
