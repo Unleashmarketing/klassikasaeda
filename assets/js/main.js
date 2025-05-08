@@ -1,1 +1,81 @@
 
+/**
+ * Klassik Asaeda - Main JavaScript
+ * Handles cart functionality and UI interactions
+ */
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize cart
+    initCart();
+    
+    // Setup event listeners
+    setupEventListeners();
+    
+    // Handle header scroll effects
+    handleHeaderScroll();
+});
+
+/**
+ * Initialize shopping cart state
+ */
+function initCart() {
+    // Get cart from localStorage or initialize empty cart
+    window.cart = JSON.parse(localStorage.getItem('klassikAsaedaCart')) || {
+        items: [],
+        total: 0
+    };
+    
+    // Update cart counter
+    updateCartCount();
+}
+
+/**
+ * Setup all event listeners
+ */
+function setupEventListeners() {
+    // Cart toggle
+    const cartToggle = document.getElementById('cart-toggle');
+    const closeCart = document.getElementById('close-cart');
+    const cartOverlay = document.getElementById('cart-overlay');
+    
+    if (cartToggle) {
+        cartToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            cartOverlay.classList.add('active');
+            // Prevent body scrolling when cart is open
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (closeCart) {
+        closeCart.addEventListener('click', function() {
+            cartOverlay.classList.remove('active');
+            // Restore body scrolling
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Add to cart buttons
+    const addToCartButtons = document.querySelectorAll('.btn-cart');
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', handleAddToCart);
+    });
+    
+    // Checkout button
+    const checkoutButton = document.getElementById('checkout-button');
+    if (checkoutButton) {
+        checkoutButton.addEventListener('click', handleCheckout);
+    }
+}
+
+/**
+ * Handle fixed header appearance on scroll
+ */
+function handleHeaderScroll() {
+    const header = document.querySelector('.site-header');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
