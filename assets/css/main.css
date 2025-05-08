@@ -1,0 +1,1299 @@
+/* Mobile Menu - Would be expanded later */
+.mobile-nav-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: block;
+    }
+}
+
+/* Recordings Page */
+.recordings {
+    padding: 60px 0;
+}
+
+.recordings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.recording-item {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.recording-header {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+    padding: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.recording-cover {
+    width: 100%;
+}
+
+.recording-cover img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recording-info h2 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.recording-composer {
+    color: var(--color-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.recording-performers {
+    margin-bottom: 10px;
+}
+
+.recording-year {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.recording-details {
+    padding: 30px;
+}
+
+.recording-description {
+    margin-bottom: 30px;
+}
+
+.recording-description p {
+    line-height: 1.7;
+}
+
+.audio-player {
+    background-color: #f9f9f9;
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.track-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.track {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.track-info {
+    display: flex;
+    align-items: center;
+}
+
+.track-number {
+    flex-shrink: 0;
+    width: 30px;
+    font-weight: 600;
+}
+
+.track-title {
+    flex-grow: 1;
+}
+
+.track-duration {
+    flex-shrink: 0;
+    color: var(--color-text-light);
+    margin-left: 15px;
+}
+
+audio {
+    width: 100%;
+    height: 36px;
+}
+
+@media (max-width: 900px) {
+    .recording-header {
+        grid-template-columns: 1fr;
+    }
+    
+    .recording-cover {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}/* 
+ * Klassik Asaeda - Main Stylesheet
+ * A modern classical style for a violinist's concert website
+ */
+
+/* Base Styles and Variables */
+:root {
+    --color-primary: #231216; /* Deep brown */
+    --color-secondary: #C0A872; /* Gold */
+    --color-light: #f5f5f5;
+    --color-dark: #231216;
+    --color-text: #333333;
+    --color-text-light: #7a7a7a;
+    --color-background: #ffffff;
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Raleway', sans-serif;
+    --transition-slow: 0.3s ease-in-out;
+    --transition-fast: 0.15s ease-in-out;
+    --border-radius: 4px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    border: 1px solid var(--color-secondary);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-secondary);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-light);
+    border: 1px solid var(--color-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-light);
+    color: var(--color-primary);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+}
+
+.btn-cart {
+    width: 100%;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border: 1px solid var(--color-dark);
+}
+
+.btn-cart:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-dark);
+}
+
+/* Header Styles */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    transition: all var(--transition-slow);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    flex: 0 0 auto;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-right: 30px;
+}
+
+.main-nav a {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    position: relative;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--color-secondary);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: width var(--transition-fast);
+}
+
+.main-nav a:hover::after, .main-nav a.active::after {
+    width: 100%;
+}
+
+.cart-button {
+    position: relative;
+}
+
+.cart-icon {
+    font-size: 1.3rem;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    font-size: 0.75rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 80px;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+}
+
+.hero-content {
+    position: relative;
+    text-align: center;
+    color: var(--color-light);
+    max-width: 800px;
+    padding: 0 20px;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--color-light);
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Features Section */
+.features {
+    padding: 80px 0;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.feature-box {
+    padding: 30px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: transform var(--transition-slow);
+}
+
+.feature-box:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--color-secondary);
+}
+
+.feature-box h2 {
+    color: var(--color-light);
+    margin-bottom: 15px;
+}
+
+.feature-box p {
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.feature-link {
+    color: var(--color-secondary);
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+}
+
+.feature-link::after {
+    content: '→';
+    margin-left: 5px;
+    transition: margin-left var(--transition-fast);
+}
+
+.feature-link:hover::after {
+    margin-left: 10px;
+}
+
+/* Upcoming Concerts Section */
+.upcoming-concerts {
+    padding: 80px 0;
+    background-color: var(--color-background);
+}
+
+.upcoming-concerts h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-dark);
+}
+
+.concert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.concert-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-slow);
+}
+
+.concert-card:hover {
+    transform: translateY(-5px);
+}
+
+.concert-image {
+    height: 200px;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #5cb85c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.concert-card h3 {
+    padding: 20px 20px 10px;
+    font-size: 1.3rem;
+}
+
+.concert-details {
+    padding: 0 20px 20px;
+}
+
+.concert-date {
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+.concert-price {
+    font-weight: 500;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--color-text-light);
+    margin-right: 10px;
+}
+
+.sale-price {
+    color: var(--color-dark);
+    font-weight: 700;
+}
+
+.concert-card .btn {
+    margin: 0 20px 20px;
+}
+
+.view-all {
+    text-align: center;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 80px 0;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+.testimonials h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--color-light);
+}
+
+.testimonial {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.testimonial blockquote {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-style: italic;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.testimonial cite {
+    color: var(--color-secondary);
+    font-style: normal;
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 60px 0 30px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.footer-column address {
+    font-style: normal;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-column a:hover {
+    color: var(--color-secondary);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+/* Cart Overlay */
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    max-width: 100%;
+    background-color: var(--color-background);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    transform: translateX(100%);
+    transition: transform var(--transition-slow);
+}
+
+.cart-overlay.active {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-dark);
+}
+
+.cart-items {
+    padding: 20px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 40px 0;
+}
+
+.cart-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    background-color: var(--color-background);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.checkout-button {
+    width: 100%;
+}
+
+.checkout-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Page Banner */
+.page-banner {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 100px 0 60px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.page-banner h1 {
+    color: var(--color-light);
+    margin-bottom: 10px;
+}
+
+.page-banner p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Concerts List */
+.concerts-list {
+    padding: 60px 0;
+}
+
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.filter-bar select {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    background-color: white;
+    font-family: var(--font-body);
+    cursor: pointer;
+    min-width: 200px;
+}
+
+.concerts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.concert-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-slow);
+    background-color: white;
+}
+
+.concert-card:hover {
+    transform: translateY(-5px);
+}
+
+.concert-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.concert-content {
+    padding: 20px;
+}
+
+.concert-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.concert-detail {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.detail-icon {
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.detail-text {
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+.concert-price {
+    margin: 20px 0;
+    font-weight: 500;
+}
+
+.concert-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.concert-actions .btn {
+    flex: 1;
+}
+
+#no-concerts-message {
+    text-align: center;
+    padding: 40px 0;
+}
+
+#no-concerts-message p {
+    margin-bottom: 20px;
+    color: var(--color-text-light);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    display: none;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: white;
+    border-radius: var(--border-radius);
+    z-index: 2000;
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-slow);
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-content {
+    position: relative;
+    padding: 30px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-dark);
+    z-index: 1;
+}
+
+.modal-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.modal-header h2 {
+    margin-bottom: 10px;
+}
+
+.modal-date {
+    color: var(--color-text-light);
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.modal-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+}
+
+.modal-description h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.program-list {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+.program-list li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.program-list li:before {
+    content: '♪';
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+}
+
+.ticket-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.ticket-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-dark);
+    color: white;
+    padding: 15px 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2500;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all var(--transition-fast);
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Form Styles for Checkout */
+.checkout-form h3 {
+    margin-bottom: 20px;
+}
+
+.checkout-summary {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-row input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.checkout-success {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.checkout-success p {
+    margin-bottom: 30px;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+    
+    .ticket-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero {
+        min-height: 500px;
+    }
+    
+    .main-nav {
+        display: none; /* Would be replaced with a mobile menu */
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .testimonial blockquote {
+        font-size: 1.5rem;
+    }
+    
+    .cart-overlay {
+        width: 100%;
+    }
+    
+    .filter-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-bar select {
+        width: 100%;
+    }
+    
+    .concerts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .concert-actions {
+        flex-direction: column;
+    }
+    
+    .modal {
+        width: 95%;
+        max-height: 80vh;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+}
+
+/* Artists Page */
+.artists {
+    padding: 60px 0;
+}
+
+.featured-artist {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.artist-image img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.artist-info h2 {
+    margin-bottom: 5px;
+    color: var(--color-dark);
+}
+
+.artist-instrument {
+    color: var(--color-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.artist-bio p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    background-color: var(--color-secondary);
+    margin: 15px auto 0;
+}
+
+.artists-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.artist-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: transform var(--transition-slow);
+    background-color: white;
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+}
+
+.artist-photo {
+    height: 250px;
+    overflow: hidden;
+}
+
+.artist-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-slow);
+}
+
+.artist-card:hover .artist-photo img {
+    transform: scale(1.05);
+}
+
+.artist-card-content {
+    padding: 20px;
+}
+
+.artist-card h3 {
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+.artist-short-bio {
+    margin: 15px 0;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+.artist-modal-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+}
+
+.artist-full-bio p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+.artist-recordings {
+    margin-top: 30px;
+}
+
+.artist-recordings h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.recordings-list {
+    list-style-type: none;
+}
+
+.recordings-list li {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.recording-title {
+    display: block;
+    font-weight: 500;
+}
+
+.recording-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 5px;
+}
+
+@media (max-width: 900px) {
+    .featured-artist {
+        grid-template-columns: 1fr;
+    }
+    
+    .artist-modal-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .artists-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* Mobile Menu - Would be expanded later */
+.mobile-nav-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: block;
+    }
+}
