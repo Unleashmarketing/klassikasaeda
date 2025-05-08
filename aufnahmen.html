@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufnahmen - Klassik Asaeda</title>
+    <meta name="description" content="Hören Sie atemberaubende Aufnahmen von Nobuhiko Asaeda und seinem Ensemble kostenlos online.">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="konzerte.html">Konzerttermine</a></li>
+                    <li><a href="kuenstler.html">Künstler</a></li>
+                    <li><a href="aufnahmen.html" class="active">Aufnahmen</a></li>
+                </ul>
+            </nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
+                </a>
+            </div>
+            <div class="cart-button">
+                <a href="#" id="cart-toggle">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="container">
+            <h1>Aufnahmen</h1>
+            <p>Hören Sie sich atemberaubende Aufnahmen von Klassik Asaeda komplett kostenlos an</p>
+        </div>
+    </section>
+
+    <section class="recordings">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-by-composer">
+                    <select id="filter-composer">
+                        <option value="all">Alle Komponisten</option>
+                        <option value="bach">Bach</option>
+                        <option value="beethoven">Beethoven</option>
+                        <option value="brahms">Brahms</option>
+                        <option value="mozart">Mozart</option>
+                        <option value="tchaikovsky">Tschaikowsky</option>
+                    </select>
+                </div>
+                <div class="filter-by-type">
+                    <select id="filter-type">
+                        <option value="all">Alle Kategorien</option>
+                        <option value="solo">Solo Violine</option>
+                        <option value="chamber">Kammermusik</option>
+                        <option value="concerto">Konzerte</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="recordings-list">
+                <!-- Recording 1 -->
+                <div class="recording-item" data-composer="bach" data-type="solo">
+                    <div class="recording-header">
+                        <div class="recording-cover">
+                            <img src="assets/images/recordings/bach-partitas.jpg" alt="Bach Partitas">
+                        </div>
+                        <div class="recording-info">
+                            <h2>J.S. Bach: Sonaten und Partiten für Violine Solo</h2>
+                            <p class="recording-composer">Johann Sebastian Bach</p>
+                            <p class="recording-performers">Nobuhiko Asaeda, Violine</p>
+                            <p class="recording-year">Aufnahme: 2022</p>
+                        </div>
+                    </div>
+                    <div class="recording-details">
+                        <div class="recording-description">
+                            <p>Diese Aufnahme präsentiert Johann Sebastian Bachs monumentale Sonaten und Partiten für Violine solo in einer einfühlsamen Interpretation von Nobuhiko Asaeda. Die sechs Werke (BWV 1001–1006) gelten als Meilensteine der Violinliteratur und stellen höchste Anforderungen an Technik und musikalisches Ausdrucksvermögen.</p>
+                        </div>
+                        <div class="audio-player">
+                            <div class="track-list">
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">1.</span>
+                                        <span class="track-title">Partita Nr. 2 in d-Moll: Allemande</span>
+                                        <span class="track-duration">4:32</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/bach-partita-2-allemande.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">2.</span>
+                                        <span class="track-title">Partita Nr. 2 in d-Moll: Chaconne</span>
+                                        <span class="track-duration">13:45</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/bach-partita-2-chaconne.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">3.</span>
+                                        <span class="track-title">Sonate Nr. 1 in g-Moll: Adagio</span>
+                                        <span class="track-duration">3:59</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/bach-sonata-1-adagio.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recording 2 -->
+                <div class="recording-item" data-composer="beethoven" data-type="chamber">
+                    <div class="recording-header">
+                        <div class="recording-cover">
+                            <img src="assets/images/recordings/beethoven-sonatas.jpg" alt="Beethoven Violin Sonatas">
+                        </div>
+                        <div class="recording-info">
+                            <h2>Beethoven: Violin Sonatas Nos. 5 & 9</h2>
+                            <p class="recording-composer">Ludwig van Beethoven</p>
+                            <p class="recording-performers">Nobuhiko Asaeda, Violine | Elena Popescu, Klavier</p>
+                            <p class="recording-year">Aufnahme: 2023</p>
+                        </div>
+                    </div>
+                    <div class="recording-details">
+                        <div class="recording-description">
+                            <p>Beethovens Violinsonaten Nr. 5 ("Frühling") und Nr. 9 ("Kreutzer") zählen zu den bedeutendsten Werken der Gattung. In dieser Aufnahme präsentieren Nobuhiko Asaeda und Elena Popescu diese beiden Meisterwerke in einer dynamischen und nuancierten Interpretation.</p>
+                        </div>
+                        <div class="audio-player">
+                            <div class="track-list">
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">1.</span>
+                                        <span class="track-title">Sonate Nr. 5 "Frühling": I. Allegro</span>
+                                        <span class="track-duration">10:12</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/beethoven-spring-allegro.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">2.</span>
+                                        <span class="track-title">Sonate Nr. 9 "Kreutzer": I. Adagio sostenuto - Presto</span>
+                                        <span class="track-duration">11:28</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/beethoven-kreutzer-presto.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recording 3 -->
+                <div class="recording-item" data-composer="tchaikovsky" data-type="concerto">
+                    <div class="recording-header">
+                        <div class="recording-cover">
+                            <img src="assets/images/recordings/tchaikovsky-concerto.jpg" alt="Tchaikovsky Violin Concerto">
+                        </div>
+                        <div class="recording-info">
+                            <h2>Tschaikowsky: Violinkonzert in D-Dur, Op. 35</h2>
+                            <p class="recording-composer">Pjotr Iljitsch Tschaikowsky</p>
+                            <p class="recording-performers">Nobuhiko Asaeda, Violine | Frankfurter Philharmoniker | Dirigent: Michael Schneider</p>
+                            <p class="recording-year">Aufnahme: 2021</p>
+                        </div>
+                    </div>
+                    <div class="recording-details">
+                        <div class="recording-description">
+                            <p>Tschaikowskys Violinkonzert in D-Dur, Op. 35 ist eines der beliebtesten und anspruchsvollsten Konzerte des violinistischen Repertoires. Nobuhiko Asaeda präsentiert hier eine leidenschaftliche Interpretation, begleitet von den Frankfurter Philharmonikern unter der Leitung von Michael Schneider.</p>
+                        </div>
+                        <div class="audio-player">
+                            <div class="track-list">
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">1.</span>
+                                        <span class="track-title">I. Allegro moderato</span>
+                                        <span class="track-duration">18:45</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/tchaikovsky-allegro.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">2.</span>
+                                        <span class="track-title">II. Canzonetta: Andante</span>
+                                        <span class="track-duration">6:32</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/tchaikovsky-canzonetta.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recording 4 -->
+                <div class="recording-item" data-composer="mozart" data-type="chamber">
+                    <div class="recording-header">
+                        <div class="recording-cover">
+                            <img src="assets/images/recordings/mozart-quartets.jpg" alt="Mozart String Quartets">
+                        </div>
+                        <div class="recording-info">
+                            <h2>Mozart: Streichquartette KV 458 & KV 465</h2>
+                            <p class="recording-composer">Wolfgang Amadeus Mozart</p>
+                            <p class="recording-performers">Asaeda Quartett (Nobuhiko Asaeda, Sora Lavorgna, Akira Tanaka, Philippe Moreau)</p>
+                            <p class="recording-year">Aufnahme: 2020</p>
+                        </div>
+                    </div>
+                    <div class="recording-details">
+                        <div class="recording-description">
+                            <p>Das Asaeda Quartett präsentiert zwei der berühmtesten Streichquartette von Wolfgang Amadeus Mozart: das "Jagdquartett" KV 458 und das "Dissonanzenquartett" KV 465. Beide Werke gehören zu den sechs "Haydn-Quartetten", die Mozart seinem Freund und Mentor Joseph Haydn widmete.</p>
+                        </div>
+                        <div class="audio-player">
+                            <div class="track-list">
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">1.</span>
+                                        <span class="track-title">Streichquartett Nr. 17 "Jagdquartett": I. Allegro vivace assai</span>
+                                        <span class="track-duration">8:23</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/mozart-kv458-allegro.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                                <div class="track">
+                                    <div class="track-info">
+                                        <span class="track-number">2.</span>
+                                        <span class="track-title">Streichquartett Nr. 19 "Dissonanzenquartett": I. Adagio - Allegro</span>
+                                        <span class="track-duration">10:06</span>
+                                    </div>
+                                    <audio controls>
+                                        <source src="assets/audio/mozart-kv465-adagio.mp3" type="audio/mpeg">
+                                        Ihr Browser unterstützt das Audio-Element nicht.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="no-recordings-message" class="hidden">
+                <p>Leider wurden keine Aufnahmen gefunden, die Ihren Filterkriterien entsprechen.</p>
+                <button id="reset-filters" class="btn btn-secondary">Filter zurücksetzen</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <address>
+                        Email: <a href="mailto:info@klassik-asaeda.de">info@klassik-asaeda.de</a><br>
+                        Telefon: +49 123 456789
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Folgen Sie uns</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Klassik Asaeda. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h2>Ihr Warenkorb</h2>
+                <button class="close-cart" id="close-cart">×</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be inserted here by JavaScript -->
+                <p class="empty-cart-message">Ihr Warenkorb ist leer.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Gesamt:</span>
+                    <span class="total-price">€0,00</span>
+                </div>
+                <button class="btn btn-primary checkout-button" id="checkout-button" disabled>Zur Kasse</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Additional JavaScript for the recordings page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterComposer = document.getElementById('filter-composer');
+            const filterType = document.getElementById('filter-type');
+            const recordingItems = document.querySelectorAll('.recording-item');
+            const noRecordingsMessage = document.getElementById('no-recordings-message');
+            const resetFiltersButton = document.getElementById('reset-filters');
+            
+            function applyFilters() {
+                const selectedComposer = filterComposer.value;
+                const selectedType = filterType.value;
+                
+                let visibleCount = 0;
+                
+                recordingItems.forEach(item => {
+                    const itemComposer = item.getAttribute('data-composer');
+                    const itemType = item.getAttribute('data-type');
+                    
+                    const composerMatch = selectedComposer === 'all' || itemComposer === selectedComposer;
+                    const typeMatch = selectedType === 'all' || itemType === selectedType;
+                    
+                    if (composerMatch && typeMatch) {
+                        item.style.display = '';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show or hide the no results message
+                if (visibleCount === 0) {
+                    noRecordingsMessage.classList.remove('hidden');
+                } else {
+                    noRecordingsMessage.classList.add('hidden');
+                }
+            }
+            
+            // Add event listeners to filters
+            if (filterComposer) filterComposer.addEventListener('change', applyFilters);
+            if (filterType) filterType.addEventListener('change', applyFilters);
+            
+            // Reset filters button
+            if (resetFiltersButton) {
+                resetFiltersButton.addEventListener('click', function() {
+                    filterComposer.value = 'all';
+                    filterType.value = 'all';
+                    applyFilters();
+                });
+            }
+            
+            // Audio players - pause other players when one starts playing
+            const audioPlayers = document.querySelectorAll('audio');
+            
+            audioPlayers.forEach(player => {
+                player.addEventListener('play', function() {
+                    audioPlayers.forEach(otherPlayer => {
+                        if (otherPlayer !== player && !otherPlayer.paused) {
+                            otherPlayer.pause();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
