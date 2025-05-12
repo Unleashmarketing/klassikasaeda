@@ -14,6 +14,11 @@
 <body>
     <header class="site-header">
         <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
+                </a>
+            </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -22,11 +27,6 @@
                     <li><a href="aufnahmen.html">Aufnahmen</a></li>
                 </ul>
             </nav>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
-                </a>
-            </div>
             <div class="cart-button">
                 <a href="#" id="cart-toggle">
                     <span class="cart-icon">🛒</span>
@@ -192,7 +192,7 @@
         </div>
     </section>
 
-    <!-- Concert Modal 1 -->
+    <!-- Concert Modal 1 - UPDATED with quantity controls -->
     <div id="modal-concert-1" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -222,6 +222,14 @@
                     67433 Neustadt an der Weinstraße</p>
                     
                     <div class="ticket-info">
+                        <div class="ticket-quantity-wrapper">
+                            <div class="ticket-quantity-label">Anzahl:</div>
+                            <div class="ticket-quantity-control">
+                                <button class="ticket-quantity-btn">-</button>
+                                <span class="ticket-quantity-value">1</span>
+                                <button class="ticket-quantity-btn">+</button>
+                            </div>
+                        </div>
                         <div class="ticket-price">
                             <span class="original-price">€22,00 EUR</span>
                             <span class="sale-price">€18,00 EUR</span>
@@ -233,7 +241,54 @@
         </div>
     </div>
 
-    <!-- Additional modals would be added here for the other concerts -->
+    <!-- Concert Modal 2 - UPDATED with quantity controls -->
+    <div id="modal-concert-2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2>Kammermusikabend in Heidelberg</h2>
+                <p class="modal-date">15. September 2024 | 20:00 Uhr</p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="assets/images/venues/heidelberg-large.jpg" alt="Alte Aula der Universität Heidelberg">
+                </div>
+                <div class="modal-description">
+                    <h3>Beschreibung</h3>
+                    <p>Genießen Sie einen exquisiten Kammermusikabend in der historischen Alten Aula der Universität Heidelberg. Das Asaeda Quartett präsentiert Meisterwerke der Kammermusik von Beethoven, Schubert und Brahms in einem der ältesten und akustisch hervorragenden Konzertsäle Deutschlands.</p>
+                    
+                    <h3>Programm</h3>
+                    <ul class="program-list">
+                        <li><strong>Ludwig van Beethoven:</strong> Streichquartett Nr. 7 F-Dur, Op. 59 Nr. 1 "Razumowsky"</li>
+                        <li><strong>Franz Schubert:</strong> Quartettsatz c-Moll, D 703</li>
+                        <li><strong>Johannes Brahms:</strong> Streichquartett Nr. 1 c-Moll, Op. 51 Nr. 1</li>
+                    </ul>
+                    
+                    <h3>Veranstaltungsort</h3>
+                    <p>Alte Aula der Universität Heidelberg<br>
+                    Grabengasse 1<br>
+                    69117 Heidelberg</p>
+                    
+                    <div class="ticket-info">
+                        <div class="ticket-quantity-wrapper">
+                            <div class="ticket-quantity-label">Anzahl:</div>
+                            <div class="ticket-quantity-control">
+                                <button class="ticket-quantity-btn">-</button>
+                                <span class="ticket-quantity-value">1</span>
+                                <button class="ticket-quantity-btn">+</button>
+                            </div>
+                        </div>
+                        <div class="ticket-price">
+                            <span>€25,00 EUR</span>
+                        </div>
+                        <button class="btn btn-cart modal-add-to-cart">In den Warenkorb legen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional modals would be updated similarly -->
 
     <footer class="site-footer">
         <div class="container">
@@ -290,138 +345,5 @@
     <div class="modal-overlay"></div>
 
     <script src="assets/js/main.js"></script>
-    <script>
-        // Additional JavaScript for the concert page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Filter functionality
-            const filterMonth = document.getElementById('filter-month');
-            const filterLocation = document.getElementById('filter-location');
-            const concertCards = document.querySelectorAll('.concert-card');
-            const noResultsMessage = document.getElementById('no-concerts-message');
-            const resetFiltersButton = document.getElementById('reset-filters');
-            
-            function applyFilters() {
-                const selectedMonth = filterMonth.value;
-                const selectedLocation = filterLocation.value;
-                
-                let visibleCount = 0;
-                
-                concertCards.forEach(card => {
-                    const cardMonth = card.getAttribute('data-month');
-                    const cardLocation = card.getAttribute('data-location');
-                    
-                    const monthMatch = selectedMonth === 'all' || cardMonth === selectedMonth;
-                    const locationMatch = selectedLocation === 'all' || cardLocation === selectedLocation;
-                    
-                    if (monthMatch && locationMatch) {
-                        card.style.display = '';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                
-                // Show or hide the no results message
-                if (visibleCount === 0) {
-                    noResultsMessage.classList.remove('hidden');
-                } else {
-                    noResultsMessage.classList.add('hidden');
-                }
-            }
-            
-            // Add event listeners to filters
-            if (filterMonth) filterMonth.addEventListener('change', applyFilters);
-            if (filterLocation) filterLocation.addEventListener('change', applyFilters);
-            
-            // Reset filters button
-            if (resetFiltersButton) {
-                resetFiltersButton.addEventListener('click', function() {
-                    filterMonth.value = 'all';
-                    filterLocation.value = 'all';
-                    applyFilters();
-                });
-            }
-            
-            // Modal functionality
-            const modalTriggers = document.querySelectorAll('.modal-trigger');
-            const modalOverlay = document.querySelector('.modal-overlay');
-            const closeBtns = document.querySelectorAll('.close-modal');
-            
-            modalTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const modalId = this.getAttribute('href');
-                    const modal = document.querySelector(modalId);
-                    
-                    if (modal) {
-                        modal.classList.add('active');
-                        modalOverlay.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            });
-            
-            function closeModals() {
-                const activeModals = document.querySelectorAll('.modal.active');
-                activeModals.forEach(modal => {
-                    modal.classList.remove('active');
-                });
-                
-                modalOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-            
-            closeBtns.forEach(btn => {
-                btn.addEventListener('click', closeModals);
-            });
-            
-            if (modalOverlay) {
-                modalOverlay.addEventListener('click', closeModals);
-            }
-            
-            // Add to cart functionality from modal
-            const modalAddToCartBtns = document.querySelectorAll('.modal-add-to-cart');
-            modalAddToCartBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const modal = this.closest('.modal');
-                    const title = modal.querySelector('.modal-header h2').textContent;
-                    const date = modal.querySelector('.modal-date').textContent;
-                    const priceElement = modal.querySelector('.sale-price') || modal.querySelector('.ticket-price').lastElementChild;
-                    const price = parseFloat(priceElement.textContent.replace('€', '').replace(',', '.').trim());
-                    
-                    // Create unique ID for this concert
-                    const concertId = title.toLowerCase().replace(/\s+/g, '-');
-                    
-                    // Check if already in cart
-                    const existingItem = window.cart.items.find(item => item.id === concertId);
-                    
-                    if (existingItem) {
-                        existingItem.quantity += 1;
-                    } else {
-                        window.cart.items.push({
-                            id: concertId,
-                            title: title,
-                            date: date,
-                            price: price,
-                            quantity: 1
-                        });
-                    }
-                    
-                    // Update cart
-                    recalculateCart();
-                    saveCart();
-                    updateCartCount();
-                    renderCartItems();
-                    
-                    // Close modal and open cart
-                    closeModals();
-                    document.getElementById('cart-overlay').classList.add('active');
-                    
-                    // Show success message
-                    showToast('Ticket zum Warenkorb hinzugefügt!');
-                });
-            });
-        });
-    </script>
 </body>
 </html>
