@@ -14,6 +14,11 @@
 <body>
     <header class="site-header">
         <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
+                </a>
+            </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -22,11 +27,6 @@
                     <li><a href="aufnahmen.html" class="active">Aufnahmen</a></li>
                 </ul>
             </nav>
-            <div class="logo">
-                <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
-                </a>
-            </div>
             <div class="cart-button">
                 <a href="#" id="cart-toggle">
                     <span class="cart-icon">🛒</span>
@@ -323,71 +323,5 @@
     </div>
 
     <script src="assets/js/main.js"></script>
-    <script>
-        // Additional JavaScript for the recordings page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Filter functionality
-            const filterComposer = document.getElementById('filter-composer');
-            const filterType = document.getElementById('filter-type');
-            const recordingItems = document.querySelectorAll('.recording-item');
-            const noRecordingsMessage = document.getElementById('no-recordings-message');
-            const resetFiltersButton = document.getElementById('reset-filters');
-            
-            function applyFilters() {
-                const selectedComposer = filterComposer.value;
-                const selectedType = filterType.value;
-                
-                let visibleCount = 0;
-                
-                recordingItems.forEach(item => {
-                    const itemComposer = item.getAttribute('data-composer');
-                    const itemType = item.getAttribute('data-type');
-                    
-                    const composerMatch = selectedComposer === 'all' || itemComposer === selectedComposer;
-                    const typeMatch = selectedType === 'all' || itemType === selectedType;
-                    
-                    if (composerMatch && typeMatch) {
-                        item.style.display = '';
-                        visibleCount++;
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-                
-                // Show or hide the no results message
-                if (visibleCount === 0) {
-                    noRecordingsMessage.classList.remove('hidden');
-                } else {
-                    noRecordingsMessage.classList.add('hidden');
-                }
-            }
-            
-            // Add event listeners to filters
-            if (filterComposer) filterComposer.addEventListener('change', applyFilters);
-            if (filterType) filterType.addEventListener('change', applyFilters);
-            
-            // Reset filters button
-            if (resetFiltersButton) {
-                resetFiltersButton.addEventListener('click', function() {
-                    filterComposer.value = 'all';
-                    filterType.value = 'all';
-                    applyFilters();
-                });
-            }
-            
-            // Audio players - pause other players when one starts playing
-            const audioPlayers = document.querySelectorAll('audio');
-            
-            audioPlayers.forEach(player => {
-                player.addEventListener('play', function() {
-                    audioPlayers.forEach(otherPlayer => {
-                        if (otherPlayer !== player && !otherPlayer.paused) {
-                            otherPlayer.pause();
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
