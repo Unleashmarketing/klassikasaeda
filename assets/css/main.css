@@ -463,14 +463,17 @@ img {
 }
 
 .concert-card {
-    border-radius: var(--border-radius);
-    overflow: hidden;
-    box-shadow: var(--box-shadow);
-    transition: transform var(--transition-slow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 .concert-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.concert-content {
+    padding: 25px;
 }
 
 .concert-image {
@@ -895,12 +898,21 @@ img {
 .concert-detail {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+}
+
+.concert-detail svg {
+    flex-shrink: 0;
 }
 
 .detail-icon {
     margin-right: 10px;
     flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    fill: var(--color-secondary);
+    position: relative;
+    top: 2px;
 }
 
 .detail-text {
