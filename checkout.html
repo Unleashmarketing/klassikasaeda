@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zur Kasse - Klassik Asaeda</title>
+    <meta name="description" content="Schließen Sie Ihre Bestellung ab und sichern Sie sich Ihre Tickets für Klassik Asaeda Konzerte.">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Nobuhiko Asaeda Logo">
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="konzerte.html">Konzerttermine</a></li>
+                    <li><a href="kuenstler.html">Künstler</a></li>
+                    <li><a href="aufnahmen.html">Aufnahmen</a></li>
+                </ul>
+            </nav>
+            <div class="cart-button">
+                <a href="#" id="cart-toggle">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-banner">
+        <div class="container">
+            <h1>Zur Kasse</h1>
+            <p>Schließen Sie Ihre Bestellung ab</p>
+        </div>
+    </section>
+
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-container">
+                <div class="order-summary">
+                    <h2>Ihre Bestellung</h2>
+                    <div id="checkout-items">
+                        <!-- Bestellübersicht wird hier dynamisch eingefügt -->
+                    </div>
+                    <div class="order-total">
+                        <span>Gesamtbetrag:</span>
+                        <span id="checkout-total">€0,00</span>
+                    </div>
+                </div>
+
+                <div class="checkout-form-container">
+                    <h2>Ihre Daten</h2>
+                    <!-- Netlify Form mit name="checkout" -->
+                    <form name="checkout" method="POST" data-netlify="true" class="checkout-form">
+                        <input type="hidden" name="form-name" value="checkout">
+                        <input type="hidden" id="order_details" name="order_details" value="">
+                        <input type="hidden" id="order_total" name="order_total" value="">
+                        
+                        <div class="form-group">
+                            <label for="name">Name*</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-Mail*</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">Adresse*</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="postal_code">PLZ*</label>
+                                <input type="text" id="postal_code" name="postal_code" required>
+                            </div>
+                            <div class="form-group half">
+                                <label for="city">Stadt*</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="country">Land*</label>
+                            <select id="country" name="country" required>
+                                <option value="Deutschland">Deutschland</option>
+                                <option value="Österreich">Österreich</option>
+                                <option value="Schweiz">Schweiz</option>
+                                <option value="Andere">Andere</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">Anmerkungen</label>
+                            <textarea id="notes" name="notes"></textarea>
+                        </div>
+                        
+                        <div class="form-group payment-method">
+                            <span class="payment-label">Zahlungsmethode*</span>
+                            <div class="payment-options">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment_method" value="Überweisung" checked>
+                                    <span class="payment-name">Überweisung</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment_method" value="PayPal">
+                                    <span class="payment-name">PayPal</span>
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment_method" value="Kreditkarte">
+                                    <span class="payment-name">Kreditkarte</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="terms" required>
+                                <span class="checkmark"></span>
+                                Ich akzeptiere die <a href="#">AGB</a> und <a href="#">Datenschutzbestimmungen</a>*
+                            </label>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Bestellung abschließen</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <address>
+                        Email: <a href="mailto:info@klassik-asaeda.de">info@klassik-asaeda.de</a><br>
+                        Telefon: +49 123 456789
+                    </address>
+                </div>
+                <div class="footer-column">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="datenschutz.html">Datenschutz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Folgen Sie uns</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">YouTube</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Klassik Asaeda. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay">
+        <div class="cart-container">
+            <div class="cart-header">
+                <h2>Ihr Warenkorb</h2>
+                <button class="close-cart" id="close-cart">×</button>
+            </div>
+            <div class="cart-items">
+                <!-- Cart items will be inserted here by JavaScript -->
+                <p class="empty-cart-message">Ihr Warenkorb ist leer.</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Gesamt:</span>
+                    <span class="total-price">€0,00</span>
+                </div>
+                <button class="btn btn-primary checkout-button" id="checkout-button" disabled>Zur Kasse</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/checkout.js"></script>
+</body>
+</html>
