@@ -231,7 +231,7 @@ function addFeatureIcons() {
     const featureBoxes = document.querySelectorAll('.feature-box');
     
     if (featureBoxes.length === 0) return;
-    
+    /**
     // Define SVG icons with improved design
     const icons = {
         artists: `<svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -256,7 +256,7 @@ function addFeatureIcons() {
             <path d="M15.01 12.85C15.01 13.45 14.6 13.95 14.01 14.09V14.1C13.32 14.27 12.64 13.74 12.54 13.04V12.64C12.54 11.98 13.06 11.44 13.72 11.42C13.74 11.42 13.76 11.42 13.78 11.42C14.45 11.42 15 11.97 15 12.64C15 12.71 15 12.78 15.01 12.85Z"/>
         </svg>`
     };
-    
+    */
     // Replace emoji with SVG icons
     featureBoxes.forEach((box, index) => {
         const iconContainer = box.querySelector('.feature-icon');
