@@ -1,0 +1,330 @@
+/* 
+ * Klassik Asaeda - Base Stylesheet
+ * Grundlegende Stile, Variablen, Typografie und Layout
+ */
+
+/* Base Styles and Variables */
+:root {
+    --color-primary: #231216; /* Deep brown */
+    --color-secondary: #C0A872; /* Gold */
+    --color-light: #f5f5f5;
+    --color-dark: #231216;
+    --color-text: #333333;
+    --color-text-light: #7a7a7a;
+    --color-background: #ffffff;
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Raleway', sans-serif;
+    --transition-slow: 0.3s ease-in-out;
+    --transition-fast: 0.15s ease-in-out;
+    --border-radius: 4px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    border: 1px solid var(--color-secondary);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-secondary);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-light);
+    border: 1px solid var(--color-light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-light);
+    color: var(--color-primary);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+}
+
+.btn-cart {
+    width: 100%;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    border: 1px solid var(--color-dark);
+}
+
+.btn-cart:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-dark);
+}
+
+/* Header Styles */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    transition: all var(--transition-slow);
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    flex: 0 0 auto;
+    order: 1;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+.main-nav {
+    order:
+    order: 2;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--color-dark);
+    position: relative;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--color-secondary);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: width var(--transition-fast);
+}
+
+.main-nav a:hover::after, .main-nav a.active::after {
+    width: 100%;
+}
+
+.cart-button {
+    position: relative;
+    order: 3;
+}
+
+.cart-icon {
+    font-size: 1.3rem;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--color-secondary);
+    color: var(--color-dark);
+    font-size: 0.75rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer Styles */
+.site-footer {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 60px 0 30px;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+.footer-column address {
+    font-style: normal;
+    margin-bottom: 20px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column li {
+    margin-bottom: 10px;
+}
+
+.footer-column a {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-column a:hover {
+    color: var(--color-secondary);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+}
+
+/* Page Banner */
+.page-banner {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: 100px 0 60px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.page-banner h1 {
+    color: var(--color-light);
+    margin-bottom: 10px;
+}
+
+.page-banner p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Helper classes */
+.hidden {
+    display: none;
+}
