@@ -1100,3 +1100,188 @@ audio {
     visibility: visible;
     transform: translateY(0);
 }
+
+/* Checkout Styles */
+.checkout-section {
+    padding: 60px 0;
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+}
+
+.order-summary {
+    background-color: #f8f8f8;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+.order-summary h2 {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-item-info {
+    flex-grow: 1;
+}
+
+.checkout-item-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.checkout-item-details {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+.checkout-item-price {
+    flex-shrink: 0;
+    font-weight: 600;
+    margin-left: 20px;
+    text-align: right;
+}
+
+.checkout-item-quantity {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--color-secondary);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.checkout-form-container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--box-shadow);
+}
+
+.checkout-form-container h2 {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-group.half {
+    width: 50%;
+}
+
+label {
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.payment-method {
+    margin-top: 10px;
+}
+
+.payment-label {
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.payment-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.payment-name {
+    margin-left: 8px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.checkbox-container input {
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.form-actions .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+/* Success message after form submission */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+    text-align: center;
+}
