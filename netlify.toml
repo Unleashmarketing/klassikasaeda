@@ -23,6 +23,7 @@
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'"
 
 # Form handling configuration
+# Form handling configuration
 [forms]
   # Main checkout form
   [forms.checkout]
@@ -37,6 +38,24 @@
       
       [forms.checkout.fields.phone]
         required = false
+      
+      [forms.checkout.fields.address]
+        required = true
+      
+      [forms.checkout.fields.postal_code]
+        required = true
+      
+      [forms.checkout.fields.city]
+        required = true
+      
+      [forms.checkout.fields.country]
+        required = true
+      
+      [forms.checkout.fields.payment_method]
+        required = true
+      
+      [forms.checkout.fields.terms]
+        required = true
       
       [forms.checkout.fields.order_details]
         required = true
