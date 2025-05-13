@@ -169,7 +169,6 @@ img {
 
 .logo {
     flex: 0 0 auto;
-    order: 1;
 }
 
 .logo img {
@@ -178,8 +177,6 @@ img {
 }
 
 .main-nav {
-    order:
-    order: 2;
     flex: 1;
     display: flex;
     justify-content: center;
@@ -223,7 +220,6 @@ img {
 
 .cart-button {
     position: relative;
-    order: 3;
 }
 
 .cart-icon {
