@@ -1,0 +1,210 @@
+/* 
+ * Klassik Asaeda - Responsive Stylesheet
+ * Media Queries für verschiedene Bildschirmgrößen
+ */
+
+/* Large Screens */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 4rem;
+    }
+    
+    .hero p {
+        font-size: 1.4rem;
+    }
+    
+    .hero-content {
+        padding-left: 50px;
+    }
+}
+
+/* Medium Screens */
+@media (max-width: 900px) {
+    .recording-header {
+        grid-template-columns: 1fr;
+    }
+    
+    .recording-cover {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+    
+    .ticket-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .featured-artist {
+        grid-template-columns: 1fr;
+    }
+    
+    .artist-modal-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Screens */
+@media (max-width: 768px) {
+    .hero {
+        height: 70vh;
+    }
+    
+    .hero-image::before {
+        background: linear-gradient(
+            180deg,
+            rgba(35, 18, 22, 0.8) 0%,
+            rgba(35, 18, 22, 0.6) 50%,
+            rgba(35, 18, 22, 0.4) 100%
+        );
+    }
+    
+    .hero-content {
+        text-align: center;
+        padding: 0 20px;
+        margin: 0 auto;
+    }
+    
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+    
+    .hero h1::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .site-header .container {
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        order: 2;
+        margin: 0 auto;
+    }
+    
+    .main-nav {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+        justify-content: center;
+    }
+    
+    .cart-button {
+        order: 1;
+    }
+    
+    .mobile-nav-toggle {
+        display: block;
+    }
+    
+    .testimonial blockquote {
+        font-size: 1.5rem;
+    }
+    
+    .cart-overlay {
+        width: 100%;
+    }
+    
+    .filter-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .filter-bar select {
+        width: 100%;
+    }
+    
+    .concerts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .concert-actions {
+        flex-direction: column;
+    }
+    
+    .modal {
+        width: 95%;
+        max-height: 80vh;
+    }
+    
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .artists-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .main-nav li {
+        margin: 5px 10px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .feature-box {
+        padding: 30px 20px;
+    }
+    
+    .modal-content {
+        padding: 15px;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .program-list li {
+        font-size: 0.9rem;
+    }
+    
+    .ticket-price {
+        font-size: 1.2rem;
+    }
+    
+    .modal-add-to-cart {
+        width: 100%;
+    }
+}
