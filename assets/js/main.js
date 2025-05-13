@@ -656,22 +656,8 @@ function removeFromCart(id) {
  * Handle checkout
  */
 function handleCheckout() {
-    // Here you would implement the checkout process
-    alert('Checkout functionality would be implemented here.');
-    
-    // For demo purposes, we'll just clear the cart
-    window.cart.items = [];
-    recalculateCart();
-    saveCart();
-    updateCartCount();
-    renderCartItems();
-    
-    // Close cart
-    document.getElementById('cart-overlay').classList.remove('active');
-    document.body.style.overflow = '';
-    
-    // Show success message
-    showToast('Vielen Dank für Ihren Einkauf!');
+    // Redirect to checkout page
+    window.location.href = 'checkout.html';
 }
 
 /**
