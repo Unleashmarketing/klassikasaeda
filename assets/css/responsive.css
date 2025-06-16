@@ -20,15 +20,6 @@
 
 /* Medium Screens */
 @media (max-width: 900px) {
-    .recording-header {
-        grid-template-columns: 1fr;
-    }
-    
-    .recording-cover {
-        max-width: 200px;
-        margin: 0 auto;
-    }
-    
     .modal-body {
         grid-template-columns: 1fr;
     }
@@ -47,7 +38,7 @@
         grid-template-columns: 1fr;
     }
 
-        .checkout-container {
+    .checkout-container {
         grid-template-columns: 1fr;
     }
     
