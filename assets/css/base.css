@@ -303,7 +303,7 @@ img {
 .page-banner {
     background-color: var(--color-dark);
     color: var(--color-light);
-    padding: 100px 0 60px;
+    padding: 80px 0 80px;
     text-align: center;
     margin-top: 60px;
 }
