@@ -387,7 +387,7 @@
     color: var(--color-text-light);
 }
 
-/* Recordings List */
+/* Recordings List - AKTUALISIERT */
 .recordings {
     padding: 60px 0;
 }
@@ -406,22 +406,8 @@
 }
 
 .recording-header {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 30px;
     padding: 30px;
     border-bottom: 1px solid #eee;
-}
-
-.recording-cover {
-    width: 100%;
-}
-
-.recording-cover img {
-    width: 100%;
-    height: auto;
-    border-radius: var(--border-radius);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .recording-info h2 {
