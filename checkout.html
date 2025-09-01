@@ -61,86 +61,121 @@
 
                 <div class="checkout-form-container">
                     <h2>Ihre Daten</h2>
-                    <!-- Netlify Form mit name="checkout" -->
-                    <form name="checkout" method="POST" data-netlify="true" class="checkout-form">
-                        <input type="hidden" name="form-name" value="checkout">
+                    <!-- Formspree Formular -->
+                    <form action="https://formspree.io/f/myzdpvwo" method="POST" class="checkout-form">
+                        <!-- Formspree Hidden Fields -->
+                        <input type="hidden" name="_next" value="/success.html">
+                        <input type="hidden" name="_subject" value="Neue Bestellung - Klassik Asaeda">
+                        <input type="hidden" name="_cc" value="dung@unleash-marketing.de">
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <!-- Order Details Hidden Fields -->
                         <input type="hidden" id="order_details" name="order_details" value="">
                         <input type="hidden" id="order_total" name="order_total" value="">
+                        <input type="hidden" id="order_id" name="order_id" value="">
+                        <input type="hidden" id="order_timestamp" name="order_timestamp" value="">
                         
                         <div class="form-group">
-                            <label for="name">Name*</label>
-                            <input type="text" id="name" name="name" required>
+                            <label for="name">
+                                Name*
+                                <input type="text" id="name" name="name" required>
+                            </label>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">E-Mail*</label>
-                            <input type="email" id="email" name="email" required>
+                            <label for="email">
+                                E-Mail*
+                                <input type="email" id="email" name="email" required>
+                            </label>
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone">
+                            <label for="phone">
+                                Telefon
+                                <input type="tel" id="phone" name="phone">
+                            </label>
                         </div>
                         
                         <div class="form-group">
-                            <label for="address">Adresse*</label>
-                            <input type="text" id="address" name="address" required>
+                            <label for="address">
+                                Adresse*
+                                <input type="text" id="address" name="address" required>
+                            </label>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group half">
-                                <label for="postal_code">PLZ*</label>
-                                <input type="text" id="postal_code" name="postal_code" required>
+                                <label for="postal_code">
+                                    PLZ*
+                                    <input type="text" id="postal_code" name="postal_code" required>
+                                </label>
                             </div>
                             <div class="form-group half">
-                                <label for="city">Stadt*</label>
-                                <input type="text" id="city" name="city" required>
+                                <label for="city">
+                                    Stadt*
+                                    <input type="text" id="city" name="city" required>
+                                </label>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="country">Land*</label>
-                            <select id="country" name="country" required>
-                                <option value="Deutschland">Deutschland</option>
-                                <option value="Österreich">Österreich</option>
-                                <option value="Schweiz">Schweiz</option>
-                                <option value="Andere">Andere</option>
-                            </select>
+                            <label for="country">
+                                Land*
+                                <select id="country" name="country" required>
+                                    <option value="">Bitte wählen...</option>
+                                    <option value="Deutschland">Deutschland</option>
+                                    <option value="Österreich">Österreich</option>
+                                    <option value="Schweiz">Schweiz</option>
+                                    <option value="Andere">Andere</option>
+                                </select>
+                            </label>
                         </div>
                         
                         <div class="form-group">
-                            <label for="notes">Anmerkungen</label>
-                            <textarea id="notes" name="notes"></textarea>
+                            <label for="notes">
+                                Anmerkungen
+                                <textarea id="notes" name="notes" rows="4"></textarea>
+                            </label>
                         </div>
                         
                         <div class="form-group payment-method">
-                            <span class="payment-label">Zahlungsmethode*</span>
-                            <div class="payment-options">
-                                <label class="payment-option">
-                                    <input type="radio" name="payment_method" value="Überweisung" checked>
-                                    <span class="payment-name">Überweisung</span>
-                                </label>
-                                <label class="payment-option">
-                                    <input type="radio" name="payment_method" value="PayPal">
-                                    <span class="payment-name">PayPal</span>
-                                </label>
-                                <label class="payment-option">
-                                    <input type="radio" name="payment_method" value="Kreditkarte">
-                                    <span class="payment-name">Kreditkarte</span>
-                                </label>
-                            </div>
+                            <fieldset>
+                                <legend class="payment-label">Zahlungsmethode*</legend>
+                                <div class="payment-options">
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment_method" value="Überweisung" checked>
+                                        <span class="payment-name">Überweisung</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment_method" value="PayPal">
+                                        <span class="payment-name">PayPal</span>
+                                    </label>
+                                    <label class="payment-option">
+                                        <input type="radio" name="payment_method" value="Kreditkarte">
+                                        <span class="payment-name">Kreditkarte</span>
+                                    </label>
+                                </div>
+                            </fieldset>
                         </div>
                         
                         <div class="form-group">
                             <label class="checkbox-container">
-                                <input type="checkbox" name="terms" required>
+                                <input type="checkbox" name="terms" value="accepted" required>
                                 <span class="checkmark"></span>
-                                Ich akzeptiere die <a href="#">AGB</a> und <a href="#">Datenschutzbestimmungen</a>*
+                                Ich akzeptiere die <a href="agb.html" target="_blank">AGB</a> und <a href="datenschutz.html" target="_blank">Datenschutzbestimmungen</a>*
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-container">
+                                <input type="checkbox" name="newsletter" value="yes">
+                                <span class="checkmark"></span>
+                                Ich möchte den Newsletter über kommende Konzerte erhalten
                             </label>
                         </div>
                         
                         <div class="form-actions">
-                            <button type="submit" class="btn btn-primary">Bestellung abschließen</button>
+                            <button type="submit" class="btn btn-primary" id="submit-order">Bestellung abschließen</button>
                         </div>
                     </form>
                 </div>
