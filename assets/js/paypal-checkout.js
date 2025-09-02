@@ -5,13 +5,20 @@
 
 // PayPal SDK laden
 function loadPayPalSDK() {
-    if (document.getElementById('paypal-sdk')) return;
-    
-    const script = document.createElement('script');
-    script.id = 'paypal-sdk';
-    script.src = 'https://www.paypal.com/sdk/js?client-id=AUAYCSmwSxa19nMRK3PIweqv499nKlhRjt-SSsxblU7rjjpyvnE0K432pgwWA7gITr6HXmsm0_4uavXs&currency=EUR';
-    script.onload = initPayPal;
-    document.head.appendChild(script);
+    return new Promise((resolve, reject) => {
+        if (document.getElementById('paypal-sdk')) {
+            // SDK bereits geladen
+            resolve();
+            return;
+        }
+        
+        const script = document.createElement('script');
+        script.id = 'paypal-sdk';
+        script.src = 'https://www.paypal.com/sdk/js?client-id=AUAYCSmwSxa19nMRK3PIweqv499nKlhRjt-SSsxblU7rjjpyvnE0K432pgwWA7gITr6HXmsm0_4uavXs&currency=EUR';
+        script.onload = () => resolve();
+        script.onerror = () => reject(new Error('PayPal SDK konnte nicht geladen werden'));
+        document.head.appendChild(script);
+    });
 }
 
 // PayPal initialisieren
@@ -181,12 +188,21 @@ function setupPaymentMethodHandlers() {
     const paymentRadios = document.querySelectorAll('input[name="payment_method"]');
     
     paymentRadios.forEach(radio => {
-        radio.addEventListener('change', function() {
+        radio.addEventListener('change', async function() {
             if (this.value === 'PayPal') {
                 // Formular validieren bevor PayPal angezeigt wird
                 if (validateFormBasic()) {
-                    loadPayPalSDK();
-                    showPayPalForm();
+                    try {
+                        showToast('PayPal wird geladen...', 'info');
+                        await loadPayPalSDK();
+                        initPayPal();
+                        showPayPalForm();
+                    } catch (error) {
+                        console.error('PayPal SDK Fehler:', error);
+                        showToast('PayPal konnte nicht geladen werden. Bitte versuchen Sie es erneut.', 'error');
+                        // Zurück zu Überweisung
+                        document.querySelector('input[name="payment_method"][value="Überweisung"]').checked = true;
+                    }
                 } else {
                     // Zurück zu Überweisung wenn Formular invalid
                     document.querySelector('input[name="payment_method"][value="Überweisung"]').checked = true;
@@ -250,6 +266,11 @@ function showToast(message, type = 'success') {
 
 // Initialisierung
 document.addEventListener('DOMContentLoaded', function() {
+    // PayPal SDK direkt beim Laden der Seite vorladen
+    loadPayPalSDK().catch(error => {
+        console.warn('PayPal SDK konnte nicht vorgeladen werden:', error);
+    });
+    
     // Warten bis normale checkout.js geladen ist
     setTimeout(() => {
         setupPaymentMethodHandlers();
