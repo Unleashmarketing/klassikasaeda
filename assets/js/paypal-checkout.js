@@ -22,7 +22,12 @@ function loadPayPalSDK() {
 }
 
 // PayPal initialisieren
+let paypalButtonsInitialized = false;
+
 function initPayPal() {
+    // Verhindere mehrfache Initialisierung
+    if (paypalButtonsInitialized) return;
+    
     // PayPal Button Container erstellen falls nicht vorhanden
     if (!document.getElementById('paypal-button-container')) {
         const paypalContainer = document.createElement('div');
@@ -95,6 +100,8 @@ function initPayPal() {
             showRegularForm();
         }
     }).render('#paypal-button-container');
+    
+    paypalButtonsInitialized = true;
 }
 
 // Formular mit PayPal-Daten übermitteln
@@ -193,9 +200,12 @@ function setupPaymentMethodHandlers() {
                 // Formular validieren bevor PayPal angezeigt wird
                 if (validateFormBasic()) {
                     try {
-                        showToast('PayPal wird geladen...', 'info');
-                        await loadPayPalSDK();
-                        initPayPal();
+                        // SDK laden falls noch nicht geschehen
+                        if (!paypalButtonsInitialized) {
+                            showToast('PayPal wird geladen...', 'info');
+                            await loadPayPalSDK();
+                            initPayPal();
+                        }
                         showPayPalForm();
                     } catch (error) {
                         console.error('PayPal SDK Fehler:', error);
