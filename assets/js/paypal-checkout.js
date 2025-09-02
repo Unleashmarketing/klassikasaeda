@@ -4,17 +4,23 @@
  */
 
 // PayPal SDK laden
-function loadPayPalSDK() {
+function loadPayPalSDK(paymentType = 'paypal') {
     return new Promise((resolve, reject) => {
-        if (document.getElementById('paypal-sdk')) {
-            // SDK bereits geladen
-            resolve();
-            return;
+        const existingScript = document.getElementById('paypal-sdk');
+        if (existingScript) {
+            existingScript.remove();
         }
         
         const script = document.createElement('script');
         script.id = 'paypal-sdk';
-        script.src = 'https://www.paypal.com/sdk/js?client-id=AUAYCSmwSxa19nMRK3PIweqv499nKlhRjt-SSsxblU7rjjpyvnE0K432pgwWA7gITr6HXmsm0_4uavXs&currency=EUR';
+        
+        // Verschiedene Konfigurationen je nach Zahlungsart
+        if (paymentType === 'paypal') {
+            script.src = 'https://www.paypal.com/sdk/js?client-id=AUAYCSmwSxa19nMRK3PIweqv499nKlhRjt-SSsxblU7rjjpyvnE0K432pgwWA7gITr6HXmsm0_4uavXs&currency=EUR&disable-funding=credit,card,sepa';
+        } else if (paymentType === 'card') {
+            script.src = 'https://www.paypal.com/sdk/js?client-id=AUAYCSmwSxa19nMRK3PIweqv499nKlhRjt-SSsxblU7rjjpyvnE0K432pgwWA7gITr6HXmsm0_4uavXs&currency=EUR&disable-funding=paypal';
+        }
+        
         script.onload = () => resolve();
         script.onerror = () => reject(new Error('PayPal SDK konnte nicht geladen werden'));
         document.head.appendChild(script);
@@ -23,18 +29,13 @@ function loadPayPalSDK() {
 
 // PayPal initialisieren
 let paypalButtonsInitialized = false;
+let currentPaymentType = null;
 
-function initPayPal() {
-    // Verhindere mehrfache Initialisierung
-    if (paypalButtonsInitialized) return;
-    
-    // Container leeren falls bereits vorhanden
-    const existingContainer = document.getElementById('paypal-button-container');
-    if (existingContainer) {
-        existingContainer.innerHTML = '';
-    } else {
-        // PayPal Button Container erstellen
-        const paypalContainer = document.createElement('div');
+function initPayPal(paymentType = 'paypal') {
+    // Container erstellen oder leeren
+    let paypalContainer = document.getElementById('paypal-button-container');
+    if (!paypalContainer) {
+        paypalContainer = document.createElement('div');
         paypalContainer.id = 'paypal-button-container';
         paypalContainer.style.display = 'none';
         
@@ -42,13 +43,16 @@ function initPayPal() {
         submitButton.parentNode.insertBefore(paypalContainer, submitButton);
     }
     
+    // Container immer leeren bei neuer Initialisierung
+    paypalContainer.innerHTML = '';
+    
     // PayPal Buttons initialisieren
     paypal.Buttons({
         style: {
             layout: 'vertical',
-            color: 'gold',
+            color: paymentType === 'card' ? 'blue' : 'gold',
             shape: 'rect',
-            label: 'checkout'
+            label: paymentType === 'card' ? 'pay' : 'checkout'
         },
         
         createOrder: function(data, actions) {
@@ -84,36 +88,44 @@ function initPayPal() {
                 console.log('PayPal Zahlung erfolgreich:', details);
                 
                 // Bestelldaten für Formspree vorbereiten
-                submitFormWithPayPalData(details, data.orderID);
+                submitFormWithPayPalData(details, data.orderID, paymentType);
             });
         },
         
         onError: function(err) {
             console.error('PayPal Error:', err);
-            showToast('PayPal-Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut.', 'error');
+            const errorMsg = paymentType === 'card' ? 
+                'Kreditkartenzahlung fehlgeschlagen. Bitte versuchen Sie es erneut.' :
+                'PayPal-Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut.';
+            showToast(errorMsg, 'error');
             
             // Zurück zum normalen Formular
             showRegularForm();
         },
         
         onCancel: function(data) {
-            console.log('PayPal Zahlung abgebrochen:', data);
-            showToast('PayPal-Zahlung wurde abgebrochen.', 'info');
+            console.log('Zahlung abgebrochen:', data);
+            const cancelMsg = paymentType === 'card' ? 
+                'Kreditkartenzahlung wurde abgebrochen.' :
+                'PayPal-Zahlung wurde abgebrochen.';
+            showToast(cancelMsg, 'info');
             
             // Zurück zum normalen Formular
             showRegularForm();
         }
     }).render('#paypal-button-container').then(() => {
         paypalButtonsInitialized = true;
-        console.log('PayPal Buttons erfolgreich initialisiert');
+        currentPaymentType = paymentType;
+        console.log(`${paymentType} Buttons erfolgreich initialisiert`);
     }).catch(error => {
-        console.error('Fehler beim Rendern der PayPal Buttons:', error);
+        console.error('Fehler beim Rendern der Buttons:', error);
         paypalButtonsInitialized = false;
+        currentPaymentType = null;
     });
 }
 
 // Formular mit PayPal-Daten übermitteln
-function submitFormWithPayPalData(paypalDetails, orderID) {
+function submitFormWithPayPalData(paypalDetails, orderID, paymentType = 'paypal') {
     const form = document.querySelector('.checkout-form');
     const cart = JSON.parse(localStorage.getItem('klassikAsaedaCart'));
     
@@ -123,11 +135,13 @@ function submitFormWithPayPalData(paypalDetails, orderID) {
     document.getElementById('order_total').value = cart.total.toFixed(2);
     
     // PayPal-spezifische Daten hinzufügen
+    const paymentMethodLabel = paymentType === 'card' ? 'KREDITKARTE' : 'PAYPAL';
+    
     let orderDetails = `Bestellnummer: ${document.getElementById('order_id').value}\n`;
     orderDetails += `PayPal Transaction ID: ${orderID}\n`;
     orderDetails += `PayPal Zahler: ${paypalDetails.payer.name.given_name} ${paypalDetails.payer.name.surname}\n`;
     orderDetails += `PayPal Email: ${paypalDetails.payer.email_address}\n`;
-    orderDetails += `Zahlungsstatus: BEZAHLT\n`;
+    orderDetails += `Zahlungsstatus: BEZAHLT (${paymentMethodLabel})\n`;
     orderDetails += `Bestelldatum: ${new Date().toLocaleDateString('de-DE')}\n`;
     orderDetails += `---\n`;
     
@@ -140,23 +154,26 @@ function submitFormWithPayPalData(paypalDetails, orderID) {
         orderDetails += `---\n`;
     });
     
-    orderDetails += `\nGesamtbetrag: €${cart.total.toFixed(2)} (ÜBER PAYPAL BEZAHLT)`;
+    orderDetails += `\nGesamtbetrag: €${cart.total.toFixed(2)} (ÜBER ${paymentMethodLabel} BEZAHLT)`;
     
     document.getElementById('order_details').value = orderDetails;
     
-    // Zahlungsmethode auf PayPal setzen
-    const paypalRadio = document.querySelector('input[name="payment_method"][value="PayPal"]');
-    if (paypalRadio) paypalRadio.checked = true;
+    // Zahlungsmethode entsprechend setzen
+    const methodValue = paymentType === 'card' ? 'Kreditkarte' : 'PayPal';
+    const methodRadio = document.querySelector(`input[name="payment_method"][value="${methodValue}"]`);
+    if (methodRadio) methodRadio.checked = true;
     
     // Zusätzliche PayPal-Felder hinzufügen
     addHiddenField('paypal_transaction_id', orderID);
     addHiddenField('paypal_payer_email', paypalDetails.payer.email_address);
     addHiddenField('paypal_payment_status', 'COMPLETED');
+    addHiddenField('payment_type', paymentType);
     
     // Betreff für E-Mail anpassen
     const subjectField = document.querySelector('input[name="_subject"]');
     if (subjectField) {
-        subjectField.value = `Neue PayPal-Bestellung - Klassik Asaeda - ${document.getElementById('order_id').value}`;
+        const methodLabel = paymentType === 'card' ? 'Kreditkarten' : 'PayPal';
+        subjectField.value = `Neue ${methodLabel}-Bestellung - Klassik Asaeda - ${document.getElementById('order_id').value}`;
     }
     
     // Formular automatisch übermitteln
@@ -185,8 +202,6 @@ function showPayPalForm() {
     
     regularButton.style.display = 'none';
     paypalContainer.style.display = 'block';
-    
-    showToast('Bitte klicken Sie auf den PayPal-Button unten, um zu bezahlen.', 'info');
 }
 
 // Reguläres Formular anzeigen
@@ -204,34 +219,43 @@ function setupPaymentMethodHandlers() {
     
     paymentRadios.forEach(radio => {
         radio.addEventListener('change', async function() {
-            if (this.value === 'PayPal') {
-                // Formular validieren bevor PayPal angezeigt wird
+            const paymentMethod = this.value;
+            
+            if (paymentMethod === 'PayPal' || paymentMethod === 'Kreditkarte') {
+                // Formular validieren bevor PayPal/Kreditkarte angezeigt wird
                 if (validateFormBasic()) {
                     try {
-                        // Prüfe ob bereits initialisiert
-                        if (paypalButtonsInitialized) {
+                        const paymentType = paymentMethod === 'PayPal' ? 'paypal' : 'card';
+                        
+                        // Prüfe ob bereits für diesen Typ initialisiert
+                        if (paypalButtonsInitialized && currentPaymentType === paymentType) {
                             // Nur anzeigen ohne neu zu initialisieren
                             showPayPalForm();
                             return;
                         }
                         
-                        // SDK laden und Buttons erstellen
-                        showToast('PayPal wird geladen...', 'info');
-                        await loadPayPalSDK();
-                        initPayPal();
+                        // SDK für entsprechenden Typ laden
+                        showToast(`${paymentMethod} wird geladen...`, 'info');
+                        await loadPayPalSDK(paymentType);
+                        
+                        // Buttons neu initialisieren
+                        paypalButtonsInitialized = false;
+                        initPayPal(paymentType);
                         showPayPalForm();
+                        
                     } catch (error) {
-                        console.error('PayPal SDK Fehler:', error);
-                        showToast('PayPal konnte nicht geladen werden. Bitte versuchen Sie es erneut.', 'error');
+                        console.error('Payment SDK Fehler:', error);
+                        showToast(`${paymentMethod} konnte nicht geladen werden. Bitte versuchen Sie es erneut.`, 'error');
                         // Zurück zu Überweisung
                         document.querySelector('input[name="payment_method"][value="Überweisung"]').checked = true;
                     }
                 } else {
                     // Zurück zu Überweisung wenn Formular invalid
                     document.querySelector('input[name="payment_method"][value="Überweisung"]').checked = true;
-                    showToast('Bitte füllen Sie alle Pflichtfelder aus, bevor Sie PayPal wählen.', 'error');
+                    showToast('Bitte füllen Sie alle Pflichtfelder aus, bevor Sie eine elektronische Zahlungsmethode wählen.', 'error');
                 }
             } else {
+                // Überweisung gewählt
                 showRegularForm();
             }
         });
