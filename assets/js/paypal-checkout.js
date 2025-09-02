@@ -28,8 +28,12 @@ function initPayPal() {
     // Verhindere mehrfache Initialisierung
     if (paypalButtonsInitialized) return;
     
-    // PayPal Button Container erstellen falls nicht vorhanden
-    if (!document.getElementById('paypal-button-container')) {
+    // Container leeren falls bereits vorhanden
+    const existingContainer = document.getElementById('paypal-button-container');
+    if (existingContainer) {
+        existingContainer.innerHTML = '';
+    } else {
+        // PayPal Button Container erstellen
         const paypalContainer = document.createElement('div');
         paypalContainer.id = 'paypal-button-container';
         paypalContainer.style.display = 'none';
@@ -99,9 +103,13 @@ function initPayPal() {
             // Zurück zum normalen Formular
             showRegularForm();
         }
-    }).render('#paypal-button-container');
-    
-    paypalButtonsInitialized = true;
+    }).render('#paypal-button-container').then(() => {
+        paypalButtonsInitialized = true;
+        console.log('PayPal Buttons erfolgreich initialisiert');
+    }).catch(error => {
+        console.error('Fehler beim Rendern der PayPal Buttons:', error);
+        paypalButtonsInitialized = false;
+    });
 }
 
 // Formular mit PayPal-Daten übermitteln
@@ -200,12 +208,17 @@ function setupPaymentMethodHandlers() {
                 // Formular validieren bevor PayPal angezeigt wird
                 if (validateFormBasic()) {
                     try {
-                        // SDK laden falls noch nicht geschehen
-                        if (!paypalButtonsInitialized) {
-                            showToast('PayPal wird geladen...', 'info');
-                            await loadPayPalSDK();
-                            initPayPal();
+                        // Prüfe ob bereits initialisiert
+                        if (paypalButtonsInitialized) {
+                            // Nur anzeigen ohne neu zu initialisieren
+                            showPayPalForm();
+                            return;
                         }
+                        
+                        // SDK laden und Buttons erstellen
+                        showToast('PayPal wird geladen...', 'info');
+                        await loadPayPalSDK();
+                        initPayPal();
                         showPayPalForm();
                     } catch (error) {
                         console.error('PayPal SDK Fehler:', error);
